@@ -1,15 +1,14 @@
 $(function () {
     $("#send").click(getPosts);
 
-    $(document).on('click','.show-comment', function (e){
+    $(document).on('click', '.show-comment', function (e) {
         let postId = $(this).attr('data-postId');
         getComments(postId);
     })
 });
 
 function getPosts() {
-    var userId = $("#userid").val();
-
+    let userId = $("#userid").val();
     $.ajax("https://jsonplaceholder.typicode.com/posts", {
         "type": "get",
         data: {
@@ -19,10 +18,10 @@ function getPosts() {
 }
 
 function displayPosts(data) {
-    // prepare ordered list
-    var postList = "<div>";
+    // prepare posts dom
+    let postList = "<div>";
     data.forEach(function (item) {
-        postList += "<div id='post-"+item.id+"'>ID: " +
+        postList += "<div id='post-" + item.id + "'>ID: " +
             item.id + "<br/>" +
             "<strong>Title: " + item.title + "</strong>" + "<br/>"
             + "Body: " + item.body + "<br/>"
@@ -34,9 +33,7 @@ function displayPosts(data) {
 
     // clean up input fields
     $("#userid").val('');
-
 }
-
 
 function getComments(postId) {
     $.ajax("https://jsonplaceholder.typicode.com/comments", {
@@ -48,8 +45,8 @@ function getComments(postId) {
 }
 
 function displayComments(data) {
-    // prepare ordered list
-    var postComments = "<div>";
+    // prepare comment dom
+    let postComments = "<div>";
     data.forEach(function (item) {
         postComments += "<p>ID: " +
             item.id + "<br/>" +
@@ -60,7 +57,7 @@ function displayComments(data) {
     });
     postComments += "<div>";
     let postId = data ? data[0].postId : '';
-    let post = $("#postList #post-"+postId).html();
+    let post = $("#postList #post-" + postId).html();
     $("#postList").html(post);
     $("#postList").append(postComments);
 }

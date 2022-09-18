@@ -8,8 +8,7 @@ $(function () {
 });
 
 function getPosts() {
-    var userId = $("#userid").val();
-
+    let userId = $("#userid").val();
     $.ajax("https://jsonplaceholder.typicode.com/posts", {
         "type": "get",
         data: {
@@ -20,7 +19,7 @@ function getPosts() {
 
 function displayPosts(data) {
     // prepare posts dom
-    var postList = "<div>";
+    let postList = "<div>";
     data.forEach(function (item) {
         postList += "<div id='post-" + item.id + "'>ID: " +
             item.id + "<br/>" +
@@ -34,9 +33,7 @@ function displayPosts(data) {
 
     // clean up input fields
     $("#userid").val('');
-
 }
-
 
 function getComments(postId) {
     $.ajax("https://jsonplaceholder.typicode.com/comments", {
@@ -49,7 +46,7 @@ function getComments(postId) {
 
 function displayComments(data) {
     // prepare comment dom
-    var postComments = "<div>";
+    let postComments = "<div>";
     data.forEach(function (item) {
         postComments += "<p>ID: " +
             item.id + "<br/>" +

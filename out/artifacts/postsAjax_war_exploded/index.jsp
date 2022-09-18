@@ -7,6 +7,7 @@
 <body>
 
 <div>
+    <h1>List the posts based on userId</h1><br/>
     <label for='userid'>Enter a userId</label>
     <input id='userid' type='text' name='userid'/>
 </div>
